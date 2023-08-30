@@ -1,18 +1,13 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+require('dotenv').config();
+const { User } = require('../models/user');
 const { SUPER_SECRET_KEY } = require('../utils/secretKey');
 
 const BadRequestError = require('../errors/badRequestError');
 const NotFoundError = require('../errors/notFoundError');
 const UnauthorizedError = require('../errors/unauthorizedError');
 const ConflictError = require('../errors/conflictError');
-
-const getUsers = (req, res, next) => {
-  User.find({})
-    .then((users) => res.send(users))
-    .catch(next);
-};
 
 const getCurrentUserInfo = (req, res, next) => {
   User.findById(req.user._id)
@@ -32,9 +27,8 @@ const getCurrentUserInfo = (req, res, next) => {
 };
 
 const createUser = (req, res, next) => {
-  const {
-    name, email,
-  } = req.body;
+  const { name, email } = req.body;
+
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       name,
@@ -107,7 +101,6 @@ const login = (req, res, next) => {
 };
 
 module.exports = {
-  getUsers,
   createUser,
   getCurrentUserInfo,
   updateUserInfo,

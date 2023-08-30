@@ -6,13 +6,15 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
 const cors = require('cors');
+const signupRouter = require('./routes/signup');
+const signinRouter = require('./routes/signin');
+const router = require('./routes/index');
 const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/notFoundError');
 const { errorHandler } = require('./middlewares/errorHandler');
 const limiter = require('./middlewares/reqLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const signupRouter = require('./routes/signup');
-const signinRouter = require('./routes/signin');
+
 
 const { PORT = 3000 } = process.env;
 const DB_URL = 'mongodb://127.0.0.1:27017/filmsdb';
@@ -47,19 +49,17 @@ app.use(requestLogger);
 
 app.use(limiter);
 
-app.get('/crash-test', () => {
-	setTimeout(() => {
-		throw new Error('Сервер сейчас упадёт');
-	}, 0);
-});
+// app.get('/crash-test', () => {
+// 	setTimeout(() => {
+// 		throw new Error('Сервер сейчас упадёт');
+// 	}, 0);
+// });
 
 app.use(signupRouter);
 app.use(signinRouter);
 
 app.use(auth);
-
-app.use('/users', require('./routes/users'));
-app.use('/cards', require('./routes/movies'));
+app.use(router);
 
 app.use((req, res, next) => next(new NotFoundError('Страница не найдена')));
 
