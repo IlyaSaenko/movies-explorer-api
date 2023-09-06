@@ -1,4 +1,5 @@
 # movies-explorer-api
+https://movies.diplom.api.nomoredomainsicu.ru/
 
 # Backend проекта movies-explorer
 * [Ссылка на репозиторий](https://github.com/IlyaSaenko/movies-explorer-api)
