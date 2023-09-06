@@ -1,11 +1,12 @@
 const { celebrate, Joi } = require('celebrate');
 const validator = require('validator');
+const { PASSWORD_REGEX, INCORRECT_URL } = require('./constants');
 
 const linkValidator = Joi.string().required().custom((value, helpers) => {
   if (validator.isURL(value)) {
     return value;
   }
-  return helpers.message('Некорректная ссылка');
+  return helpers.message(INCORRECT_URL);
 });
 
 module.exports.validateChangeUserInfo = celebrate({
@@ -23,17 +24,17 @@ module.exports.validateDeleteMovie = celebrate({
 
 module.exports.validateCreateMovie = celebrate({
   body: Joi.object().keys({
-    country: Joi.string().min(2),
-    director: Joi.string().min(2),
-    duration: Joi.number(),
-    year: Joi.string().min(2),
-    description: Joi.string().min(2),
+    country: Joi.string().required().min(2),
+    director: Joi.string().required().min(2),
+    duration: Joi.number().required().min(2),
+    year: Joi.string().required().min(2),
+    description: Joi.string().required().min(2),
     image: linkValidator,
     trailerLink: linkValidator,
     thumbnail: linkValidator,
-    nameRU: Joi.string().min(2),
-    nameEN: Joi.string().min(2),
-    movieId: Joi.number(),
+    movieId: Joi.number().required(),
+    nameRU: Joi.string().required().min(2),
+    nameEN: Joi.string().required().min(2),
   }),
 });
 
@@ -41,14 +42,13 @@ module.exports.validateCreateUser = celebrate({
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30),
     email: Joi.string().required().email(),
-    password: Joi.string().required(),
+    password: Joi.string().required().pattern(PASSWORD_REGEX),
   }),
 });
 
 module.exports.validateLogin = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30),
     email: Joi.string().required().email(),
-    password: Joi.string().required(),
+    password: Joi.string().required().pattern(PASSWORD_REGEX),
   }),
 });
