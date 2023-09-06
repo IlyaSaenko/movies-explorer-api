@@ -38,7 +38,7 @@ const movieSchema = new mongoose.Schema({
     validate: {
       validator: (link) => URL_REGEX.test(link),
       message: 'Требуется ввести корректный URL',
-    }
+    },
   },
 
   trailerLink: {
@@ -47,7 +47,7 @@ const movieSchema = new mongoose.Schema({
     validate: {
       validator: (link) => URL_REGEX.test(link),
       message: 'Требуется ввести корректный URL',
-    }
+    },
   },
 
   thumbnail: {
@@ -57,7 +57,7 @@ const movieSchema = new mongoose.Schema({
     validate: {
       validator: (link) => URL_REGEX.test(link),
       message: 'Требуется ввести корректный URL',
-    }
+    },
   },
 
   owner: {
@@ -76,7 +76,7 @@ const movieSchema = new mongoose.Schema({
     minlength: 2,
     required: true,
   },
-  
+
   nameEN: {
     type: String,
     minlength: 2,

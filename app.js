@@ -15,7 +15,6 @@ const { errorHandler } = require('./middlewares/errorHandler');
 const limiter = require('./middlewares/reqLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-
 const { PORT = 3000 } = process.env;
 const DB_URL = 'mongodb://127.0.0.1:27017/filmsdb';
 const app = express();
@@ -26,35 +25,30 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-	origin: [
-		'localhost:3000',
-		'http://localhost:3000',
-		'http://movies.diplom.api.nomoredomainsicu.ru'
-	],
-	credentials: true,
-	maxAge: 30,
+  origin: [
+    'localhost:3000',
+    'http://localhost:3000',
+    'http://movies.diplom.api.nomoredomainsicu.ru',
+    'https://movies.diplom.api.nomoredomainsicu.ru',
+  ],
+  credentials: true,
+  maxAge: 30,
 }));
 
 app.use(helmet());
 
 mongoose
-	.connect(DB_URL)
-	.then(() => {
-		console.log('Connected to DB');
-	})
-	.catch(() => {
-		console.log('ERROR connection to DB');
-	});
+  .connect(DB_URL)
+  .then(() => {
+    console.log('Connected to DB');
+  })
+  .catch(() => {
+    console.log('ERROR connection to DB');
+  });
 
 app.use(requestLogger);
 
 app.use(limiter);
-
-// app.get('/crash-test', () => {
-// 	setTimeout(() => {
-// 		throw new Error('Сервер сейчас упадёт');
-// 	}, 0);
-// });
 
 app.use(signupRouter);
 app.use(signinRouter);
@@ -69,5 +63,5 @@ app.use(errors());
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-	console.log(`App listening on port ${PORT}`);
+  console.log(`App listening on port ${PORT}`);
 });

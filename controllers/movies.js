@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable max-len */
 const Movie = require('../models/movie');
 const BadRequestError = require('../errors/badRequestError');
 const NotFoundError = require('../errors/notFoundError');
@@ -11,7 +13,7 @@ const getAllMovies = (req, res, next) => {
 
 const createMovie = (req, res, next) => {
   const {
-    country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN
+    country, director, duration, year, description, image, trailerLink, thumbnail, movieId, nameRU, nameEN,
 
   } = req.body;
   Movie.create({
@@ -26,19 +28,18 @@ const createMovie = (req, res, next) => {
     owner: req.user,
     movieId,
     nameRU,
-    nameEN
+    nameEN,
   })
     .then((movie) => {
       res.send(movie);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        console.log(err)
+        console.log(err);
         return next(new BadRequestError('Переданы некорректные данные при попытке добавления фильма'));
       }
       return next(err);
     });
-
 };
 
 const deleteMovie = (req, res, next) => {
@@ -48,7 +49,7 @@ const deleteMovie = (req, res, next) => {
   Movie
     .findById(movieId)
     .then((movie) => {
-      console.log(movie)
+      console.log(movie);
       if (!movie) throw new NotFoundError('Фильм с указанным id не найден');
       if (!movie.owner.equals(userId)) {
         throw new ForbiddenError('Недостаточно прав для удаления данного фильма');
@@ -66,9 +67,8 @@ const deleteMovie = (req, res, next) => {
     });
 };
 
-
 module.exports = {
   getAllMovies,
   createMovie,
-  deleteMovie
+  deleteMovie,
 };

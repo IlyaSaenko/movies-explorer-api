@@ -3,11 +3,5 @@
     "rules": {
       "no-underscore-dangle": ["error", { "allow": ["_id"] }],
       "linebreak-style": 0
-    },
-    "error": {
-        "ObjectExpression": { "consistent": true, "multiline": true },
-        "ObjectPattern": { "consistent": true, "multiline": true },
-        "ImportDeclaration": "never",
-        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
-      }
+    }
   }

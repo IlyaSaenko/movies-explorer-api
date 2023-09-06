@@ -5,5 +5,5 @@ const PASSWORD_REGEX = /^(?=.*[A-z])(?=.*\d)(?=.*[!@#$%^&*])(?=.{8,})/;
 module.exports = {
   URL_REGEX,
   EMAIL_REGEX,
-  PASSWORD_REGEX
+  PASSWORD_REGEX,
 };

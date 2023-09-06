@@ -5,7 +5,6 @@ const { User } = require('../models/user');
 // const { SUPER_SECRET_KEY } = require('../utils/secretKey');
 const secretKey = require('../utils/secretKey');
 
-
 const BadRequestError = require('../errors/badRequestError');
 const NotFoundError = require('../errors/notFoundError');
 const UnauthorizedError = require('../errors/unauthorizedError');
@@ -37,7 +36,7 @@ const updateUserInfo = (req, res, next) => {
     {
       new: true,
       runValidators: true,
-      upsert: false
+      upsert: false,
     },
   )
     .then((user) => {
@@ -57,7 +56,7 @@ const updateUserInfo = (req, res, next) => {
     });
 };
 
-//signup
+// signup
 const createUser = (req, res, next) => {
   const { name, email } = req.body;
 
@@ -65,11 +64,11 @@ const createUser = (req, res, next) => {
     .then((hash) => User.create({
       name,
       email,
-      password: hash
+      password: hash,
     }))
     .then((user) => res.status(201).send(
       {
-        name: user.name, email: user.email, _id: user.id
+        name: user.name, email: user.email, _id: user.id,
       },
     ))
     .catch((err) => {
@@ -84,7 +83,7 @@ const createUser = (req, res, next) => {
     });
 };
 
-//signin
+// signin
 const login = (req, res, next) => {
   const { email, password } = req.body;
   User
@@ -109,5 +108,5 @@ module.exports = {
   createUser,
   getCurrentUserInfo,
   updateUserInfo,
-  login
+  login,
 };
