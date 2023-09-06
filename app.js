@@ -28,7 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors({
 	origin: [
 		'localhost:3000',
-		'http://localhost:3000'
+		'http://localhost:3000',
+		'http://movies.diplom.api.nomoredomainsicu.ru'
 	],
 	credentials: true,
 	maxAge: 30,

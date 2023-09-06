@@ -3,6 +3,8 @@
 # Backend проекта movies-explorer
 * [Ссылка на репозиторий](https://github.com/IlyaSaenko/movies-explorer-api)
 
+IP 158.160.55.170
+
 # Frontend проекта movies-explorer
 * [Ссылка на репозиторий](https://github.com/IlyaSaenko/movies-explorer-frontend)
 
