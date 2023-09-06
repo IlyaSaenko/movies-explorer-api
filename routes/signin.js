@@ -1,6 +1,15 @@
-const signinRouter = require('express').Router();
+// const signinRouter = require('express').Router();
+
+// const { validateLogin } = require('../utils/validation');
+// const { login } = require('../controllers/users');
+
+// module.exports = signinRouter.post('/signin', validateLogin, login);
+
+const router = require('express').Router();
 
 const { validateLogin } = require('../utils/validation');
 const { login } = require('../controllers/users');
 
-module.exports = signinRouter.post('/signin', validateLogin, login);
+router.post('/signin', validateLogin, login);
+
+module.exports = router;

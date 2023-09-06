@@ -39,10 +39,10 @@ app.use(helmet());
 mongoose
 	.connect(DB_URL)
 	.then(() => {
-		console.log('Подключён с БД');
+		console.log('Connected to DB');
 	})
 	.catch(() => {
-		console.log('Ошибка подключения БД');
+		console.log('ERROR connection to DB');
 	});
 
 app.use(requestLogger);

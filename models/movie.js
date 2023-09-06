@@ -51,7 +51,7 @@ const movieSchema = new mongoose.Schema({
   },
 
   thumbnail: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'user',
     required: true,
     validate: {
