@@ -8,6 +8,8 @@ const LOCAL_HOST = 'localhost:3001';
 const LOCAL_HOST_HTTP = 'http://localhost:3001';
 const SERVER_HOST_HTTP = 'http://movies.diplom.api.nomoredomainsicu.ru';
 const SERVER_HOST_HTTPS = 'https://movies.diplom.api.nomoredomainsicu.ru';
+const FRONTEND_SERVER_HOST_HTTP = 'http://moviespoisk.diplom.nomoredomainsrocks.ru';
+const FRONTEND_SERVER_HOST_HTTPS = 'https://moviespoisk.diplom.nomoredomainsrocks.ru';
 
 const SUCCES_CONNECTION_TO_DB = 'Connected to DB';
 const ERROR_CONNECTION_TO_DB = 'ERROR connection to DB';
@@ -55,6 +57,8 @@ module.exports = {
   LOCAL_HOST_HTTP,
   SERVER_HOST_HTTP,
   SERVER_HOST_HTTPS,
+  FRONTEND_SERVER_HOST_HTTP,
+  FRONTEND_SERVER_HOST_HTTPS,
   SUCCES_CONNECTION_TO_DB,
   ERROR_CONNECTION_TO_DB,
   PAGE_NOT_FOUND,
