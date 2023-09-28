@@ -49,6 +49,7 @@ module.exports.validateCreateUser = celebrate({
 module.exports.validateLogin = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required().pattern(PASSWORD_REGEX),
+    // password: Joi.string().required().pattern(PASSWORD_REGEX),
+    password: Joi.string().required(),
   }),
 });
