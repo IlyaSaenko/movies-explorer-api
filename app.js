@@ -12,6 +12,8 @@ const { errorHandler } = require('./middlewares/errorHandler');
 const limiter = require('./middlewares/reqLimiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const {
+  LOCAL_HOST3000,
+  LOCAL_HOST_HTTP3000,
   LOCAL_HOST,
   LOCAL_HOST_HTTP,
   SERVER_HOST_HTTP,
@@ -35,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
   origin: [
+    LOCAL_HOST3000,
+    LOCAL_HOST_HTTP3000,
     LOCAL_HOST,
     LOCAL_HOST_HTTP,
     SERVER_HOST_HTTP,

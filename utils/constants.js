@@ -2,8 +2,8 @@ const URL_REGEX = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()
 const EMAIL_REGEX = /.+@.+\..+/;
 const PASSWORD_REGEX = /^(?=.*[A-z])(?=.*\d)(?=.*[!@#$%^&*])(?=.{8,})/;
 
-// const LOCAL_HOST = 'localhost:3000';
-// const LOCAL_HOST_HTTP = 'http://localhost:3000';
+const LOCAL_HOST3000 = 'localhost:3000';
+const LOCAL_HOST_HTTP3000 = 'http://localhost:3000';
 const LOCAL_HOST = 'localhost:3001';
 const LOCAL_HOST_HTTP = 'http://localhost:3001';
 const SERVER_HOST_HTTP = 'http://movies.diplom.api.nomoredomainsicu.ru';
@@ -53,6 +53,8 @@ module.exports = {
   URL_REGEX,
   EMAIL_REGEX,
   PASSWORD_REGEX,
+  LOCAL_HOST3000,
+  LOCAL_HOST_HTTP3000,
   LOCAL_HOST,
   LOCAL_HOST_HTTP,
   SERVER_HOST_HTTP,
